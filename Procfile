@@ -1,1 +1,1 @@
-web: python models.py
+web: gunicorn models:app
