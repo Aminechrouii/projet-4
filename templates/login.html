@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center">Connexion</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mot de passe</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Se Connecter</button>
+        </form>
+        <div class="mt-3 text-center">
+            <a href="{{ url_for('motdepasse_oublie') }}">Mot de passe oublié?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

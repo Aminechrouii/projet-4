@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="text-center">Calcul du Coefficient de Diffusion</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Fraction molaire (x_A)</label>
+                <input type="number" step="0.01" name="x_A" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">D_AB_0 pour le composé A</label>
+                <input type="number" step="0.0000001" name="D_AB_0_A" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">D_AB_0 pour le composé B</label>
+                <input type="number" step="0.0000001" name="D_AB_0_B" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Calculer</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

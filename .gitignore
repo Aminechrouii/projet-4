@@ -1,0 +1,7 @@
+/.env
+/.venv
+/database.db
+/database1.err
+/database1.log
+/database1.out
+/database1.page
