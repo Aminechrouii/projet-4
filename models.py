@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv() 
-app = Flask(__name__)
+app = Flask(__name__)  # Ensure this line exists and is correct
 app.secret_key = os.getenv("SECRET_KEY")
 DATABASE = 'database.db'
 login_attempts = {}
@@ -260,5 +260,5 @@ def page_not_found(page):
     return render_template_string("<h1> sorry this page "+page+" is note found<h1>"), 404
 
 if __name__ == '__main__':
-    init_db()
-    app.run(host='0.0.0.0', port=5000)
+    init_db()  # Initialize the database
+    app.run(host='0.0.0.0', port=5000)  # Ensure the app runs correctly
