@@ -27,12 +27,19 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nom TEXT NOT NULL,
             prenom TEXT NOT NULL,
-            motdepasse TEXT NOT NULL,
+            password TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL
         )
     ''')
     conn.commit()
     conn.close()
+
+    # Set permissions for the SQLite database file
+    try:
+        os.chmod(DATABASE, 0o777)  # Equivalent to chmod 0777
+        print(f"Permissions for {DATABASE} set to 0777.")
+    except Exception as e:
+        print(f"Error setting permissions for {DATABASE}: {e}")
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
