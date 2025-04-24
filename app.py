@@ -27,7 +27,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nom TEXT NOT NULL,
             prenom TEXT NOT NULL,
-            password TEXT NOT NULL,
+            motdepasse TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL
         )
     ''')
