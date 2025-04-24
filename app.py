@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv() 
-app = Flask(__name__)  # Ensure this line exists and is correct
+app = Flask(__name__) 
 app.secret_key = os.getenv("SECRET_KEY")
 DATABASE = 'database.db'
 login_attempts = {}
@@ -36,7 +36,7 @@ def init_db():
 
     # Set permissions for the SQLite database file
     try:
-        os.chmod(DATABASE, 0o777)  # Equivalent to chmod 0777
+        os.chmod(DATABASE, 0o777) 
         print(f"Permissions for {DATABASE} set to 0777.")
     except Exception as e:
         print(f"Error setting permissions for {DATABASE}: {e}")
@@ -74,7 +74,6 @@ def signup():
         elif '@' not in email:
             flash('Un email non valide.')
         else:
-            # تشفير كلمة المرور
             hashed_password = generate_password_hash(motdepasse)
             
             conn = get_db_connection()
@@ -178,7 +177,7 @@ def update_user_password(email, nouveau_motdepasse):
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         
-        # التحقق من وجود البريد الإلكتروني في الجدول الصحيح
+        
         cursor.execute("SELECT email FROM utilisateurs WHERE email = ?", (email,))
         utilisateur = cursor.fetchone()
         
@@ -186,10 +185,10 @@ def update_user_password(email, nouveau_motdepasse):
             conn.close()
             return False
         
-        # تشفير كلمة المرور الجديدة
+        
         hashed_password = generate_password_hash(nouveau_motdepasse)
         
-        # تحديث كلمة المرور في الجدول الصحيح
+        
         cursor.execute(
             "UPDATE utilisateurs SET motdepasse = ? WHERE email = ?",
             (hashed_password, email)
@@ -267,5 +266,5 @@ def page_not_found(page):
     return render_template_string("<h1> sorry this page "+page+" is note found<h1>"), 404
 
 if __name__ == '__main__':
-    init_db()  # Initialize the database
-    app.run(host='0.0.0.0', port=5000)  # Ensure the app runs correctly
+    init_db()  
+    app.run(host='0.0.0.0', port=5000)  
