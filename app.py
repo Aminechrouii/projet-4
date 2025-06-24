@@ -213,6 +213,17 @@ def calcul_diffusion():
             D_AB_0_B = float(request.form['D_AB_0_B'])
             D_exp = 1.3295e-5
 
+            lambda_A = float(request.form['lambda_A']) #1.1269
+            lambda_B = float(request.form['lambda_B']) #0.9725
+            q_A = float(request.form['q_A']) #1.432
+            q_B = float(request.form['q_B']) #1.4
+            theta_BA = float(request.form['theta_BA']) #0.612
+            theta_AB = float(request.form['theta_AB']) #0.261
+            theta_AA = float(request.form['theta_AA']) #0.388
+            theta_BB = float(request.form['theta_BB']) #0.739
+            tau_AB = float(request.form['tau_AB']) #1.0326
+            tau_BA = float(request.form['tau_BA']) #0.5383
+
             if not (0 <= x_A <= 1):
                 flash("La fraction molaire x_A doit être entre 0 et 1.", "danger")
                 return render_template("calcul_diffusion.html")
@@ -220,19 +231,7 @@ def calcul_diffusion():
             if D_AB_0_A <= 0 or D_AB_0_B <= 0:
                 flash("Les valeurs de D_AB_0 doivent être positives.", "danger")
                 return render_template("calcul_diffusion.html")
-
-            # Constantes
-            lambda_A = 1.1269
-            lambda_B = 0.9725
-            q_A = 1.432
-            q_B = 1.4
-            theta_BA = 0.612
-            theta_AB = 0.261
-            theta_AA = 0.388
-            theta_BB = 0.739
-            tau_AB = 1.0326
-            tau_BA = 0.5383
-
+            
             x_B = 1 - x_A
             phi_A = x_A * lambda_A / (x_A * lambda_A + x_B * lambda_B)
             phi_B = x_B * lambda_B / (x_A * lambda_A + x_B * lambda_B)
